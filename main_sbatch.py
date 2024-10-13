@@ -159,13 +159,13 @@ if __name__ == "__main__":
     args["action_scale"] = action_scale
     args["action_bias"] = action_bias
 
-    # Step 1: create algorithm and approximate function
+    # Create algorithm and approximate function
     alg = create_alg(**args)
-    # Step 2: create sampler in trainer
+    # Create sampler in trainer
     sampler = Sampler(**args)
-    # Step 3: create buffer in trainer
+    # Create buffer in trainer
     buffer = create_buffer(**args)
-    # Step 4: create evaluator in trainer
+    # Create evaluator in trainer
     evaluator = Evaluator(**args)
     trainer = create_trainer(cfg, alg, sampler, buffer, evaluator, **args)
 
