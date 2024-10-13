@@ -1,0 +1,103 @@
+{
+    "env": [
+        {   
+            "env_type": [
+                "gym"
+            ],
+            "env_id": [
+                "Ant-v3",
+                "HalfCheetah-v3",
+                "Walker2d-v3",
+                "Humanoid-v3",
+                "Hopper-v3",
+                "Swimmer-v3"
+            ],
+            "reward_scale": [1],
+            "is_render": [false],
+            "is_adversary": [false],
+            "seed": [1],
+            "generate_random_seed": [true]
+        }
+    ],
+
+    "optimizer": [
+        {
+            "name": ["aSGLD"],
+            "kwargs": [
+                {
+                    "lr": [1e-3],
+                    "noise_scale": [1e-8],
+                    "a": [1]
+                }
+            ],
+            "num_parallel": [10]
+        }
+    ],
+
+    "agent": [
+        {
+            "algo": ["LSAC"],
+            "action_type": ["continu"],
+            "gamma": [0.99],
+            "tau": [0.005],
+            "auto_alpha": [true],
+            "alpha": [0.2],
+            "enable_cuda": [true],
+            "gradient_clip": [-1]
+        }
+    ],
+
+    "value": [
+        {
+            "value_func_type": ["MLP"],
+            "value_func_name": ["ActionValueDistri"],
+            "value_hidden_sizes": [[256,256,256]],
+            "value_hidden_activation": ["gelu"],
+            "value_output_activation": ["linear"],
+            "value_min_log_std": [-8],
+            "value_max_log_std": [8]
+        }
+    ],
+
+    "policy": [
+        {
+            "policy_func_name": ["StochaPolicy"],
+            "policy_func_type": ["MLP"],
+            "policy_act_distribution": ["TanhGaussDistribution"],
+            "policy_hidden_sizes": [[256,256,256]],
+            "policy_hidden_activation": ["gelu"],
+            "policy_output_activation": ["linear"],
+            "policy_min_log_std": [-20],
+            "policy_max_log_std": [0.5],
+            "policy_learning_rate": [1e-4],
+            "alpha_learning_rate": [3e-4],
+            "delay_update": [2]
+        }
+    ],
+
+    "sampling": [
+        {
+            "max_iteration": [1e6],
+            "trainer": ["off_serial_trainer"],
+            "buffer_name": ["replay_buffer"],
+            "buffer_warm_size": [1e3],
+            "buffer_max_size": [1e6],
+            "replay_batch_size": [256],
+            "upsample": [true],
+            "sample_interval": [1],
+            "sampler_name": ["off_sampler"],
+            "sample_batch_size": [20]
+        }
+    ],
+
+    "eval": [
+        {
+            "evaluator_name": ["evaluator"],
+            "num_eval_episode": [5],
+            "eval_interval": [100],
+            "eval_save": [false],
+            "apprfunc_save_interval": [5e3],
+            "log_save_interval": [100]
+        }
+    ]
+}
