@@ -7,11 +7,9 @@ ema-pytorch==0.6.2
 glfw==2.7.0
 gym==0.23.1
 keras==3.5.0
-matplotlib==3.9.2
 mujoco==2.3.2
 mujoco-py==2.1.2.14
 numpy==1.26.4
-openpyxl==3.1.5
 opt-einsum==3.3.0
 packaging==24.1
 pandas==2.2.2
@@ -19,8 +17,6 @@ pillow==10.4.0
 protobuf==4.25.4
 pybullet==3.2.6
 pycparser==2.22
-pygame==2.6.0
-pyglet==2.0.17
 PyYAML==6.0.2
 ray==2.34.0
 scikit-learn==1.5.2
